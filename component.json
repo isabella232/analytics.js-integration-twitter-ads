@@ -7,7 +7,10 @@
   "main": "lib/index.js",
   "dependencies": {
     "component/each": "0.0.1",
-    "segmentio/analytics.js-integration": "^1.0.1"
+    "ndhoule/defaults":"1.0.1",
+    "ndhoule/foldl":"1.0.3",
+    "segmentio/analytics.js-integration": "^1.0.1",
+    "segmentio/obj-case": "^0.2.1"
   },
   "development": {
     "segmentio/analytics.js": "*",
