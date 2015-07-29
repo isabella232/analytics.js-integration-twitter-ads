@@ -11,8 +11,12 @@ describe('Twitter Ads', function() {
   var options = {
     events: {
       signup: 'c36462a3',
-      login: '6137ab24',
+      login: 'c36462a3',
       play: 'e3196de1'
+    },
+    paths: {
+      '/pricing': 'c36462a4',
+      '/features': 'c36462a5'
     }
   };
 
@@ -54,8 +58,20 @@ describe('Twitter Ads', function() {
         analytics.didNotCall(twitter.load);
       });
 
+      it('should not send if location.pathname does not match any mapped paths', function() {
+        twitter.options.paths = { '/test/something': 'e3196de1' };
+        analytics.page();
+        analytics.didNotCall(twitter.load);
+      });
+
       it('should send if `page` option is defined', function() {
         twitter.options.page = 'e3196de1';
+        analytics.page();
+        analytics.loaded('<img src="http://analytics.twitter.com/i/adsct?txn_id=e3196de1&p_id=Twitter">');
+      });
+
+      it('should send if location.pathname matches mapped path', function() {
+        twitter.options.paths = { '/test/': 'e3196de1' };
         analytics.page();
         analytics.loaded('<img src="http://analytics.twitter.com/i/adsct?txn_id=e3196de1&p_id=Twitter">');
       });
