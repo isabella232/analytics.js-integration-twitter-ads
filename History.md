@@ -1,4 +1,9 @@
 
+1.0.3 / 2015-07-30
+==================
+
+  * add support for sale amount and order quantity fields
+
 1.0.2 / 2015-06-30
 ==================
 
