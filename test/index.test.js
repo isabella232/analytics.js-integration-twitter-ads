@@ -14,7 +14,7 @@ describe('Twitter Ads', function() {
       signup: 'c36462a3',
       login: '6137ab24',
       play: 'e3196de1',
-      'Completed Order': 'adsf7as8'
+      'Order Completed': 'adsf7as8'
     }
   };
 
@@ -89,8 +89,8 @@ describe('Twitter Ads', function() {
         analytics.loaded('<img src="http://analytics.twitter.com/i/adsct?txn_id=c36462a3&p_id=Twitter&tw_sale_amount=10&tw_order_quantity=0">');
       });
 
-      it('should send total as revenue and quantity of all products with completed order', function() {
-        analytics.track('Completed Order', {
+      it('should send total as revenue and quantity of all products with Order Completed', function() {
+        analytics.track('Order Completed', {
           orderId: '50314b8e9bcf000000000000',
           total: 30,
           revenue: 25,
