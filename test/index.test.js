@@ -36,7 +36,34 @@ describe('Twitter Ads', function() {
   it('should have the correct settings', function() {
     analytics.compare(Twitter, integration('Twitter Ads')
       .option('page', '')
+      .option('universalTagPixelId', '')
       .mapping('events'));
+  });
+
+  describe('before loading', function() {
+    beforeEach(function() {
+      analytics.stub(twitter, 'load');
+    });
+
+    describe('initialize', function() {
+      it('should create window.twq if universal tag pixel id is provided', function() {
+        twitter.options.universalTagPixelId = 'teemo';
+        analytics.assert(!window.twq);
+        analytics.initialize();
+        analytics.assert(typeof window.twq === 'function');
+      });
+
+      it('should not load universal tag script if universal tag pixel id is not provided', function() {
+        analytics.initialize();
+        analytics.didNotCall(twitter.load);
+      });
+
+      it('should load universal tag script if universal tag pixel id is provided', function() {
+        twitter.options.universalTagPixelId = 'teemo';
+        analytics.initialize();
+        analytics.called(twitter.load, 'universalTag');
+      });
+    });
   });
 
   describe('after loading', function() {
@@ -49,17 +76,34 @@ describe('Twitter Ads', function() {
     describe('#page', function() {
       beforeEach(function() {
         analytics.spy(twitter, 'load');
+        analytics.spy(window, 'twq');
       });
 
-      it('should not send if `page` option is not defined', function() {
-        analytics.page();
-        analytics.didNotCall(twitter.load);
+      describe('single tag', function() {
+        it('should not send if `page` option is not defined', function() {
+          analytics.page();
+          analytics.didNotCall(twitter.load);
+        });
+
+        it('should send if `page` option is defined', function() {
+          twitter.options.page = 'e3196de1';
+          analytics.page();
+          analytics.loaded('<img src="http://analytics.twitter.com/i/adsct?txn_id=e3196de1&p_id=Twitter&tw_sale_amount=0&tw_order_quantity=0">');
+        });
       });
 
-      it('should send if `page` option is defined', function() {
-        twitter.options.page = 'e3196de1';
-        analytics.page();
-        analytics.loaded('<img src="http://analytics.twitter.com/i/adsct?txn_id=e3196de1&p_id=Twitter&tw_sale_amount=0&tw_order_quantity=0">');
+      describe('universal tag', function() {
+        it('should track standard pageview', function() {
+          twitter.options.universalTagPixelId = 'teemo';
+          analytics.page();
+          analytics.called(window.twq, 'track', 'PageView');
+        });
+
+        it('should not call default single tag for pageviews', function() {
+          twitter.options.universalTagPixelId = 'teemo';
+          analytics.page();
+          analytics.didNotCall(twitter.load);
+        });
       });
     });
 
