@@ -66,6 +66,21 @@ describe('Twitter Ads', function() {
     });
   });
 
+  describe('during loading', function() {
+    describe('initialize', function() {
+      beforeEach(function(done) {
+        twitter.options.universalTagPixelId = 'teemo';
+        analytics.initialize();
+        analytics.stub(window, 'twq');
+        analytics.once('ready', done);
+      });
+
+      it('should initialize twq with the universal tag pixel id if provided', function() {
+        analytics.called(window.twq, 'init', 'teemo');
+      }); 
+    }); 
+  });
+
   describe('after loading', function() {
     beforeEach(function(done) {
       analytics.once('ready', done);
