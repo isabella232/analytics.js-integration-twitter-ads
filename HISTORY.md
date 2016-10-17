@@ -1,4 +1,9 @@
 
+2.3.0 / 2016-10-13
+==================
+
+  * Add Support for Advanced Conversion Tracking 
+
 2.2.0 / 2016-08-23
 ==================
 
