@@ -258,7 +258,7 @@ describe('Twitter Ads', function() {
             content_type: 'product',
             content_name: 'Monopoly: 3rd Edition',
             num_items: '1',
-            order_id: ['50314b8e9bcf000000000000']
+            order_id: '50314b8e9bcf000000000000'
           });
         });
 
@@ -299,7 +299,7 @@ describe('Twitter Ads', function() {
             content_type: 'product',
             content_name: 'Monopoly: 3rd Edition, Uno Card Game',
             num_items: '3',
-            order_id: ['50314b8e9bcf000000000000']
+            order_id: '50314b8e9bcf000000000000'
           });
         });
 
@@ -333,7 +333,7 @@ describe('Twitter Ads', function() {
             content_type: 'product',
             content_name: 'Monopoly: 3rd Edition',
             num_items: '1',
-            order_id: ['50314b8e9bcf000000000000']
+            order_id: '50314b8e9bcf000000000000'
           });
         });
 
@@ -367,7 +367,7 @@ describe('Twitter Ads', function() {
             content_type: 'product',
             content_name: 'Monopoly: 3rd Edition',
             num_items: '1',
-            order_id: ['50314b8e9bcf000000000000'],
+            order_id: '50314b8e9bcf000000000000',
             status: 'tilted'
           });
         });
