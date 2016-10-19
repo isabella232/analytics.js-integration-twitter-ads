@@ -1,4 +1,9 @@
 
+2.4.0 / 2016-10-19
+==================
+
+  * Update Universal Website Tag script
+
 2.3.1 / 2016-10-18
 ==================
 
@@ -7,7 +12,7 @@
 2.3.0 / 2016-10-13
 ==================
 
-  * Add Support for Advanced Conversion Tracking 
+  * Add Support for Advanced Conversion Tracking
 
 2.2.0 / 2016-08-23
 ==================

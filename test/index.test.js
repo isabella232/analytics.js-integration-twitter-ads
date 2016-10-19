@@ -865,6 +865,18 @@ describe('Twitter Ads', function() {
           });
           analytics.called(window.twq, 'track', 'AddPaymentInfo', {});
         });
+
+        it('should send AddPaymentInfo tag with status if properties.status is provided', function() {
+          analytics.track('Payment Info Entered', {
+            checkout_id: '39f39fj39f3jf93fj9fj39fj3f',
+            order_id: 'dkfsjidfjsdifsdfksdjfkdsfjsdfkdsf',
+            step: 4,
+            shipping_method: 'FedEx',
+            payment_method: 'Credit Card',
+            status: 'paid'
+          });
+          analytics.called(window.twq, 'track', 'AddPaymentInfo', { status: 'paid' });
+        });
       });
     });
   });
