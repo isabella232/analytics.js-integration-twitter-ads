@@ -112,6 +112,16 @@ describe('Twitter Ads', function() {
         });
       });
 
+      describe('single tag + universal', function() {
+        it('should send if `page` option is defined and also track standard pageview', function() {
+          twitter.options.page = 'e3196de1';
+          twitter.options.universalTagPixelId = 'teemo';
+          analytics.page();
+          analytics.loaded('<img src="http://analytics.twitter.com/i/adsct?txn_id=e3196de1&p_id=Twitter&tw_sale_amount=0&tw_order_quantity=0">');
+          analytics.called(window.twq, 'track', 'PageView');
+        });
+      });
+
       describe('universal tag', function() {
         it('should track standard pageview', function() {
           twitter.options.universalTagPixelId = 'teemo';

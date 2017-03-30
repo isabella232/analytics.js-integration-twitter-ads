@@ -1,4 +1,10 @@
 
+2.5.0 / 2017-03-30
+==================
+
+  * Updated page() call to support both Universal Website Tag & singleTag
+    simultaneously
+
 2.4.0 / 2016-10-19
 ==================
 
